@@ -239,11 +239,16 @@ body {
 }
 
 .research-interests {
-    margin-top: 3rem;
     padding: 2rem;
     background-color: var(--bg-light);
     border-radius: 8px;
+
+    /* 关键：让宽度与上方段落一致 */
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 .research-interests h3 {
     font-size: 1.5rem;

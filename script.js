@@ -61,8 +61,21 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe elements for animation
-document.querySelectorAll('.publication-item, .timeline-item, .award-item').forEach(el => {
+document.querySelectorAll('.publication-item, .timeline-item, .award-item, .news-item').forEach(el => {
     observer.observe(el);
+});
+
+// Hide visitor placeholder if a real widget is loaded
+window.addEventListener('load', () => {
+    const widget = document.getElementById('visitorWidget');
+    const placeholder = document.getElementById('visitorPlaceholder');
+    if (widget && placeholder) {
+        // Check if widget has any real content (script tags, images, iframes)
+        const hasContent = widget.querySelector('script, img, iframe, canvas, a');
+        if (hasContent) {
+            placeholder.style.display = 'none';
+        }
+    }
 });
 
 // Smooth scroll for anchor links

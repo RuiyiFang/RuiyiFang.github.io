@@ -214,6 +214,25 @@ body {
     color: var(--text-dark);
 }
 
+.section-subtitle {
+    max-width: 900px;
+    margin: -2rem auto 2.5rem;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.section-subtitle a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.section-subtitle a:hover {
+    text-decoration: underline;
+}
+
 /* About Section */
 .about-content {
     max-width: 900px;
@@ -334,6 +353,11 @@ body {
     background-color: #fee2e2;
     color: #dc2626;
     animation: pulse-badge 2s ease-in-out infinite;
+}
+
+.news-badge.collab {
+    background-color: #e0e7ff;
+    color: #4338ca;
 }
 
 @keyframes pulse-badge {

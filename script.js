@@ -128,41 +128,6 @@ function copyBibTeX(paperTitle) {
     });
 }
 
-// Add tooltips for social links
-const socialLinks = document.querySelectorAll('.social-links a');
-socialLinks.forEach(link => {
-    link.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-5px)';
-    });
-    
-    link.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
-});
-
-// Typing effect for hero title (optional)
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.innerHTML = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    
-    type();
-}
-
-// Uncomment to enable typing effect
-// const heroTitle = document.querySelector('.hero-title');
-// if (heroTitle) {
-//     const text = heroTitle.textContent;
-//     typeWriter(heroTitle, text, 100);
-// }
-
 // Print CV functionality
 function printCV() {
     window.print();
@@ -207,12 +172,6 @@ backToTopButton.addEventListener('click', () => {
         behavior: 'smooth'
     });
 });
-
-// Console message
-console.log('%c Welcome to Ruiyi Fang\'s Personal Website! ', 
-    'background: #2563eb; color: white; font-size: 16px; padding: 10px; border-radius: 5px;');
-console.log('Feel free to explore the code and reach out if you have any questions!');
-
 
 // Console message
 console.log('%c Welcome to Ruiyi Fang\'s Personal Website! ', 

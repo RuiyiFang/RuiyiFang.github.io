@@ -212,3 +212,9 @@ backToTopButton.addEventListener('click', () => {
 console.log('%c Welcome to Ruiyi Fang\'s Personal Website! ', 
     'background: #2563eb; color: white; font-size: 16px; padding: 10px; border-radius: 5px;');
 console.log('Feel free to explore the code and reach out if you have any questions!');
+
+
+// Console message
+console.log('%c Welcome to Ruiyi Fang\'s Personal Website! ', 
+    'background: #2563eb; color: white; font-size: 16px; padding: 10px; border-radius: 5px;');
+console.log('Feel free to explore the code and reach out if you have any questions!');

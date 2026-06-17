@@ -66,16 +66,23 @@ document.querySelectorAll('.publication-item, .timeline-item, .award-item, .news
 });
 
 // Hide visitor placeholder if a real widget is loaded
-window.addEventListener('load', () => {
+function hideVisitorPlaceholderIfReady() {
     const widget = document.getElementById('visitorWidget');
     const placeholder = document.getElementById('visitorPlaceholder');
-    if (widget && placeholder) {
-        // Check if widget has any real content (script tags, images, iframes)
-        const hasContent = widget.querySelector('script, img, iframe, canvas, a');
-        if (hasContent) {
-            placeholder.style.display = 'none';
-        }
+    if (!widget || !placeholder) return;
+
+    // Prefer the MapMyVisitors globe script, but fall back to any injected
+    // content (script/img/iframe/canvas/a) so the check stays widget-agnostic.
+    const hasWidget = widget.querySelector('#mmvst_globe, script, img, iframe, canvas, a');
+    if (hasWidget) {
+        placeholder.style.display = 'none';
     }
+}
+
+window.addEventListener('load', () => {
+    hideVisitorPlaceholderIfReady();
+    // Re-check after the globe script asynchronously injects its canvas/iframe.
+    setTimeout(hideVisitorPlaceholderIfReady, 1500);
 });
 
 // Smooth scroll for anchor links

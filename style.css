@@ -430,6 +430,10 @@ body {
 }
 
 .publication-item {
+    display: grid;
+    grid-template-columns: 290px minmax(0, 1fr);
+    gap: 1.6rem;
+    align-items: start;
     background-color: var(--bg-white);
     padding: 1.5rem 1.75rem;
     margin-bottom: 1rem;
@@ -444,10 +448,116 @@ body {
     box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
 }
 
-.pub-badge {
+/* Overview figure (thumbnail; click to enlarge) */
+.pub-figure {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 10;
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: zoom-in;
+    transition: border-color 0.2s ease;
+}
+
+.pub-figure img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+    transition: transform 0.3s ease;
+}
+
+.pub-figure:hover,
+.pub-figure:focus-visible {
+    border-color: var(--primary-color);
+}
+
+.pub-figure:hover img {
+    transform: scale(1.03);
+}
+
+.pub-figure:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.pub-figure-zoom {
     position: absolute;
-    top: 1.35rem;
-    right: 1.35rem;
+    right: 8px;
+    bottom: 8px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(30, 64, 175, 0.88);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.pub-figure:hover .pub-figure-zoom,
+.pub-figure:focus-visible .pub-figure-zoom {
+    opacity: 1;
+}
+
+@media (hover: none) {
+    .pub-figure-zoom {
+        opacity: 0.9;
+    }
+}
+
+/* Shown when images/overview_<name>.png does not exist yet */
+.pub-figure.is-missing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    background: linear-gradient(135deg, #deebf7 0%, #f7fbff 100%);
+}
+
+.pub-figure.is-missing img,
+.pub-figure.is-missing .pub-figure-zoom {
+    display: none;
+}
+
+.pub-figure.is-missing::before {
+    content: attr(data-acronym);
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #1f4e79;
+    letter-spacing: 0.02em;
+}
+
+.pub-figure.is-missing::after {
+    content: attr(data-venue);
+    margin-top: 0.2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #2e75b6;
+}
+
+.pub-body {
+    min-width: 0;
+}
+
+.pub-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 0.55rem;
+}
+
+.pub-badge {
+    display: inline-block;
     padding: 3px 10px;
     background-color: var(--primary-color);
     color: white;
@@ -458,13 +568,130 @@ body {
     white-space: nowrap;
 }
 
+.pub-badge.oral {
+    background-color: #fef3c7;
+    color: #92400e;
+    box-shadow: inset 0 0 0 1px #fcd34d;
+}
+
+.pub-venue {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
 .publication-item h3 {
     font-size: 1.1rem;
     font-weight: 600;
     line-height: 1.45;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
     color: var(--text-dark);
-    padding-right: 130px;
+}
+
+.pub-tldr {
+    margin: 0.6rem 0 0;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    border-left: 3px solid var(--primary-color);
+    border-radius: 0 4px 4px 0;
+}
+
+.pub-tldr-label {
+    margin-right: 0.35rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--primary-color);
+}
+
+/* Lightbox for enlarged overview figures */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 16px 24px;
+    background-color: rgba(15, 23, 42, 0.94);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    /* hide only after the fade-out finishes */
+    transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+}
+
+.lightbox.open {
+    opacity: 1;
+    visibility: visible;
+    /* become visible immediately so the close button can take focus */
+    transition: opacity 0.2s ease, visibility 0s linear 0s;
+}
+
+.lightbox-figure {
+    margin: 0;
+    max-width: min(1200px, 100%);
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lightbox-img {
+    display: block;
+    max-width: 100%;
+    max-height: calc(100vh - 170px);
+    object-fit: contain;
+    background-color: white;
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: var(--shadow-lg);
+}
+
+.lightbox-caption {
+    margin-top: 0.9rem;
+    max-width: 900px;
+    text-align: center;
+    color: #e5e7eb;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.lightbox-caption a {
+    color: #93c5fd;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.lightbox-caption a:hover {
+    text-decoration: underline;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+body.lightbox-lock {
+    overflow: hidden;
 }
 
 .authors {
@@ -494,6 +721,7 @@ body {
 
 .pub-links {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.6rem;
     margin-top: 0.8rem;
 }
@@ -792,14 +1020,21 @@ body {
         min-width: auto;
     }
 
-    .pub-badge {
-        position: static;
-        display: inline-block;
-        margin-bottom: 0.5rem;
+    .publication-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.25rem;
     }
 
-    .publication-item h3 {
-        padding-right: 0;
+    .pub-figure {
+        aspect-ratio: 16 / 9;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 960px) {
+    .publication-item {
+        grid-template-columns: 230px minmax(0, 1fr);
+        gap: 1.25rem;
     }
 }
 

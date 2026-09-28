@@ -131,21 +131,32 @@ git push origin main
 
 ### Add New Publications
 
-Add new publication entries in the publications section:
+Each selected publication has an overview figure and a one-to-two sentence TL;DR.
+Put the figure in `images/overview_<name>.png` (a PNG about 1600px wide works well).
+If the file does not exist yet, the card shows `data-acronym` and `data-venue` as a
+placeholder, so the figure appears as soon as the PNG is uploaded. Clicking a figure
+opens it enlarged.
 
 ```html
-<div class="publication-item">
-    <div class="pub-badge">Conference Year</div>
-    <h3>Paper Title</h3>
-    <p class="authors">
-        <strong>Your Name</strong>, Co-author Names
-    </p>
-    <div class="pub-links">
-        <a href="link-to-paper.pdf" class="pub-link">
-            <i class="fas fa-file-pdf"></i> Paper
-        </a>
+<article class="publication-item">
+    <a class="pub-figure" href="images/overview_name.png" data-acronym="NAME" data-venue="Venue Year" aria-label="Enlarge the NAME overview figure">
+        <img src="images/overview_name.png" alt="Overview of NAME" loading="lazy">
+        <span class="pub-figure-zoom" aria-hidden="true"><i class="fas fa-expand"></i></span>
+    </a>
+    <div class="pub-body">
+        <div class="pub-meta">
+            <span class="pub-badge">Venue Year</span>
+            <!-- optional: <span class="pub-badge oral">Oral</span> -->
+        </div>
+        <h3>Paper Title</h3>
+        <p class="authors"><strong>Your Name</strong>, Co-author Names</p>
+        <p class="pub-tldr"><span class="pub-tldr-label">TL;DR</span> One or two sentences on the idea.</p>
+        <div class="pub-links">
+            <a href="link-to-paper" class="pub-link" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Paper</a>
+            <a href="link-to-code" class="pub-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+        </div>
     </div>
-</div>
+</article>
 ```
 
 ### Update Research Interests
@@ -243,4 +254,4 @@ For questions or suggestions, please contact:
 
 ---
 
-**Last Updated**: November 2025
+**Last Updated**: September 2026

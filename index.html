@@ -109,6 +109,18 @@
                     <div class="news-date">Sep 2026</div>
                     <div class="news-content">
                         <span class="news-badge new">New</span>
+                        <strong>Five</strong> of our papers are accepted at <strong>NeurIPS 2026</strong>:
+                        &ldquo;<em><strong>From Small to Large: Cross-Scale Graph Domain Adaptation via Local-Global Structural Alignment</strong></em>&rdquo;,
+                        &ldquo;<em>Spectral Energy Allocation Enables Source-Free Domain Adaptation in Time Series Forecasting</em>&rdquo; (<strong>Oral</strong>),
+                        &ldquo;<em>Disentangling Homophilic and Heterophilic Patterns for Multi-Domain Graph Foundation Models</em>&rdquo;,
+                        &ldquo;<em>Beyond Feature Disruption: Boundary-Diverting Unlearnable Examples against Linear Probing</em>&rdquo;, and
+                        &ldquo;<em>Unsupervised Unlearnable Segmentation via Semantic Structure Disruption</em>&rdquo;.
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">Sep 2026</div>
+                    <div class="news-content">
+                        <span class="news-badge new">New</span>
                         I was awarded the <a href="https://ewh.ieee.org/r7/cafoundation/EN/cercone_scholarship.php" target="_blank"><strong>2026 IEEE Canadian Foundation Nick Cercone Graduate Scholarship in Computer Science</strong></a>.
                     </div>
                 </div>
@@ -132,7 +144,7 @@
                 <div class="news-item">
                     <div class="news-date">Apr 2026</div>
                     <div class="news-content">
-                        Our paper &ldquo;<em><strong>Transfer Learning with Graph Neural Networks to Predict Polymer Solubility Parameter</strong></em>&rdquo; is accepted at <strong>npj Computational Materials</strong>.
+                        Our paper &ldquo;<em><strong>Transfer Learning with Graph Neural Networks to Predict Polymer Solubility Parameters</strong></em>&rdquo; is accepted at <strong>npj Computational Materials</strong>.
                     </div>
                 </div>
                 <div class="news-item">
@@ -184,89 +196,166 @@
     </section>
 
     <!-- Publications Section -->
+    <!-- Overview figures live in images/overview_<name>.png. If a file is missing,
+         the card shows the paper's acronym instead; adding the PNG makes the figure appear. -->
     <section id="publications" class="section">
         <div class="container">
             <h2 class="section-title">Selected Publications</h2>
             <p class="section-subtitle">
-                First-author / co-first-author papers are listed below. For a complete list including collaborative works, please see my 
+                First-author / co-first-author papers are listed below (* equal contribution). Click a figure to enlarge it.
+                For a complete list including collaborative works, please see my
                 <a href="https://scholar.google.com/citations?user=CkrucIIAAAAJ" target="_blank">Google Scholar</a> profile.
             </p>
             <div class="publications-list">
-                
-                <div class="publication-item">
-                    <div class="pub-badge">npj Comput. Mater.</div>
-                    <h3>Transfer Learning with Graph Neural Networks to Predict Polymer Solubility Parameter</h3>
-                    <p class="authors">
-                        <strong>Ruiyi Fang</strong>, Changhong Chen, Qiang Wang, Charles Ling, Boyu Wang, Hong Zhang
-                    </p>
-                    <div class="pub-links">
-                        <a href="https://www.nature.com/articles/s41524-026-02109-7" class="pub-link"><i class="fas fa-file-pdf"></i> Paper</a>
-                    </div>
-                    <p class="venue">npj Computational Materials (Nature Partner Journal)</p>
-                </div>
 
-                <div class="publication-item">
-                    <div class="pub-badge">ICLR 2026</div>
-                    <h3>SAGA: Structural Aggregation Guided Alignment with Dynamic View and Neighborhood Order Selection for Multiview Graph Domain Adaptation</h3>
-                    <p class="authors">
-                        <strong>Ruiyi Fang</strong>, Jingyu Zhao, Shuo Wang, Ruizhi Pu, Bingheng Li, Jiale Cai, 
-                        Zhihao Li, Zihao Jing, Jian Zhu, Song Tang, Charles Ling, Boyu Wang 
-                    </p>
-                    <div class="pub-links">
-                        <a href="https://openreview.net/forum?id=hC9Ny8iMLi" class="pub-link"><i class="fas fa-file-pdf"></i> Paper</a>
+                <article class="publication-item">
+                    <a class="pub-figure" href="images/overview_lgsa.png" data-acronym="LGSA" data-venue="NeurIPS 2026" aria-label="Enlarge the LGSA overview figure">
+                        <img src="images/overview_lgsa.png" alt="Overview of LGSA" loading="lazy">
+                        <span class="pub-figure-zoom" aria-hidden="true"><i class="fas fa-expand"></i></span>
+                    </a>
+                    <div class="pub-body">
+                        <div class="pub-meta">
+                            <span class="pub-badge">NeurIPS 2026</span>
+                        </div>
+                        <h3>From Small to Large: Cross-Scale Graph Domain Adaptation via Local-Global Structural Alignment</h3>
+                        <p class="authors">
+                            <strong>Ruiyi Fang</strong>, Gezheng Xu, Qiuhao Zeng, Zihao Jing, Jiale Cai, Zhihao Li, Hao Zheng,
+                            Xuanting Xie, Shuo Wang, Bingheng Li, Ruizhi Pu, Zhao Kang, Charles Ling, Boyu Wang
+                        </p>
+                        <p class="pub-tldr"><span class="pub-tldr-label">TL;DR</span> Studies cross-scale graph domain adaptation, transferring from a small labeled source graph to a much larger unlabeled target graph. LGSA aligns local neighborhood structure with a GCN branch and scale-robust global structure with a descriptor-based MLP branch, fusing the two by prediction entropy.</p>
+                        <!-- Add a Paper link here once the camera-ready version is public -->
                     </div>
-                </div>
-                
-                <div class="publication-item">
-                    <div class="pub-badge">AAAI 2026 (Oral)</div>
-                    <h3>Graph Domain Adaptation via Homophily-Agnostic Reconstructing Structure</h3>
-                    <p class="authors">
-                        <strong>Ruiyi Fang</strong>, Shuo Wang, Ruizhi Pu, QIUHAO Zeng, Hao Zheng, 
-                        Ziyan Wang, Jiale Cai, Zhimin Mei, Song Tang, Charles Ling, Boyu Wang
-                    </p>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/pdf/2602.07573" class="pub-link"><i class="fas fa-file-pdf"></i> Paper</a>
-                    </div>
-                </div>
-                
-                <div class="publication-item">
-                    <div class="pub-badge">ICML 2025</div>
-                    <h3>Homophily Enhanced Graph Domain Adaptation</h3>
-                    <p class="authors">
-                        <strong>Ruiyi Fang*</strong>, Bingheng Li*, Jingyu Zhao, Ruizhi Pu, Qiuhao Zeng, 
-                        Gezheng Xu, Charles Ling, Boyu Wang
-                    </p>
-                    <p class="note">* indicates equal contribution</p>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/pdf/2505.20089" class="pub-link"><i class="fas fa-file-pdf"></i> Paper</a>
-                    </div>
-                </div>
+                </article>
 
-                <div class="publication-item">
-                    <div class="pub-badge">ICLR 2025</div>
-                    <h3>On the Benefits of Attribute-Driven Graph Domain Adaptation</h3>
-                    <p class="authors">
-                        <strong>Ruiyi Fang*</strong>, Bingheng Li*, Zhao Kang, Qiuhao Zeng, Nima Hosseini Dashtbayaz, 
-                        Ruizhi Pu, Boyu Wang, Charles Ling
-                    </p>
-                    <p class="note">* indicates equal contribution</p>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/pdf/2502.06808" class="pub-link"><i class="fas fa-file-pdf"></i> Paper</a>
+                <article class="publication-item">
+                    <a class="pub-figure" href="images/overview_gtpolysol.png" data-acronym="GT-PolySol" data-venue="npj Comput. Mater. 2026" aria-label="Enlarge the GT-PolySol overview figure">
+                        <img src="images/overview_gtpolysol.png" alt="Overview of GT-PolySol" loading="lazy">
+                        <span class="pub-figure-zoom" aria-hidden="true"><i class="fas fa-expand"></i></span>
+                    </a>
+                    <div class="pub-body">
+                        <div class="pub-meta">
+                            <span class="pub-badge">npj Comput. Mater. 2026</span>
+                            <span class="pub-venue">Nature Partner Journal</span>
+                        </div>
+                        <h3>Transfer Learning with Graph Neural Networks to Predict Polymer Solubility Parameters</h3>
+                        <p class="authors">
+                            <strong>Ruiyi Fang</strong>, Changhong Chen, Qiang Wang, Charles Ling, Boyu Wang, Hong Zhang
+                        </p>
+                        <p class="pub-tldr"><span class="pub-tldr-label">TL;DR</span> Polymer Hansen solubility parameter labels are scarce, so GT-PolySol transfers knowledge from 10k+ labeled solvent molecules through a graph neural network, while its PPTA algorithm enriches polymer representations with generated oligomers and fragments.</p>
+                        <div class="pub-links">
+                            <a href="https://www.nature.com/articles/s41524-026-02109-7" class="pub-link" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Paper</a>
+                            <a href="https://github.com/Ruiyifang/TLGNNPPSP" class="pub-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                        </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="publication-item">
-                    <div class="pub-badge">ICDM 2022</div>
-                    <h3>Structure-Preserving Graph Representation Learning</h3>
-                    <p class="authors">
-                        <strong>Ruiyi Fang*</strong>, Liangjian Wen*, Zhao Kang, Jianzhuang Liu
-                    </p>
-                    <p class="note">* indicates equal contribution</p>
-                    <p class="venue">IEEE International Conference on Data Mining (ICDM) 2022</p>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/pdf/2209.00793" class="pub-link"><i class="fas fa-file-pdf"></i> Paper</a>
+                <article class="publication-item">
+                    <a class="pub-figure" href="images/overview_saga.png" data-acronym="SAGA" data-venue="ICLR 2026" aria-label="Enlarge the SAGA overview figure">
+                        <img src="images/overview_saga.png" alt="Overview of SAGA" loading="lazy">
+                        <span class="pub-figure-zoom" aria-hidden="true"><i class="fas fa-expand"></i></span>
+                    </a>
+                    <div class="pub-body">
+                        <div class="pub-meta">
+                            <span class="pub-badge">ICLR 2026</span>
+                        </div>
+                        <h3>SAGA: Structural Aggregation Guided Alignment with Dynamic View and Neighborhood Order Selection for Multiview Graph Domain Adaptation</h3>
+                        <p class="authors">
+                            <strong>Ruiyi Fang</strong>, Jingyu Zhao, Shuo Wang, Ruizhi Pu, Bingheng Li, Jiale Cai,
+                            Zhihao Li, Zihao Jing, Jian Zhu, Song Tang, Charles Ling, Boyu Wang
+                        </p>
+                        <p class="pub-tldr"><span class="pub-tldr-label">TL;DR</span> Extends graph domain adaptation to multi-view graphs. A Structural Aggregation Distance scores every view and neighborhood-order pair, and alignment follows the dominant pair as it shifts during training.</p>
+                        <div class="pub-links">
+                            <a href="https://openreview.net/forum?id=hC9Ny8iMLi" class="pub-link" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Paper</a>
+                            <a href="https://github.com/f1shungry/SAGA" class="pub-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                        </div>
                     </div>
-                </div>
+                </article>
+
+                <article class="publication-item">
+                    <a class="pub-figure" href="images/overview_rsgda.png" data-acronym="RSGDA" data-venue="AAAI 2026" aria-label="Enlarge the RSGDA overview figure">
+                        <img src="images/overview_rsgda.png" alt="Overview of RSGDA" loading="lazy">
+                        <span class="pub-figure-zoom" aria-hidden="true"><i class="fas fa-expand"></i></span>
+                    </a>
+                    <div class="pub-body">
+                        <div class="pub-meta">
+                            <span class="pub-badge">AAAI 2026</span>
+                            <span class="pub-badge oral">Oral</span>
+                        </div>
+                        <h3>Graph Domain Adaptation via Homophily-Agnostic Reconstructing Structure</h3>
+                        <p class="authors">
+                            <strong>Ruiyi Fang</strong>, Shuo Wang, Ruizhi Pu, Qiuhao Zeng, Hao Zheng,
+                            Ziyan Wang, Jiale Cai, Zhimin Mei, Song Tang, Charles Ling, Boyu Wang
+                        </p>
+                        <p class="pub-tldr"><span class="pub-tldr-label">TL;DR</span> A homophily-agnostic approach for targets whose homophily level is unknown: it reconstructs homophilic and heterophilic variants of both graphs and aligns each pair separately, with the largest gains on heterophilic graphs.</p>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/pdf/2602.07573" class="pub-link" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Paper</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-item">
+                    <a class="pub-figure" href="images/overview_hgda.png" data-acronym="HGDA" data-venue="ICML 2025" aria-label="Enlarge the HGDA overview figure">
+                        <img src="images/overview_hgda.png" alt="Overview of HGDA" loading="lazy">
+                        <span class="pub-figure-zoom" aria-hidden="true"><i class="fas fa-expand"></i></span>
+                    </a>
+                    <div class="pub-body">
+                        <div class="pub-meta">
+                            <span class="pub-badge">ICML 2025</span>
+                        </div>
+                        <h3>Homophily Enhanced Graph Domain Adaptation</h3>
+                        <p class="authors">
+                            <strong>Ruiyi Fang*</strong>, Bingheng Li*, Jingyu Zhao, Ruizhi Pu, Qiuhao Zeng,
+                            Gezheng Xu, Charles Ling, Boyu Wang
+                        </p>
+                        <p class="pub-tldr"><span class="pub-tldr-label">TL;DR</span> Shows empirically and theoretically that homophily discrepancy between source and target graphs degrades adaptation, and aligns homophilic, full-pass, and heterophilic filtered signals across domains to close the gap.</p>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/pdf/2505.20089" class="pub-link" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Paper</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-item">
+                    <a class="pub-figure" href="images/overview_gaa.png" data-acronym="GAA" data-venue="ICLR 2025" aria-label="Enlarge the GAA overview figure">
+                        <img src="images/overview_gaa.png" alt="Overview of GAA" loading="lazy">
+                        <span class="pub-figure-zoom" aria-hidden="true"><i class="fas fa-expand"></i></span>
+                    </a>
+                    <div class="pub-body">
+                        <div class="pub-meta">
+                            <span class="pub-badge">ICLR 2025</span>
+                        </div>
+                        <h3>On the Benefits of Attribute-Driven Graph Domain Adaptation</h3>
+                        <p class="authors">
+                            <strong>Ruiyi Fang*</strong>, Bingheng Li*, Zhao Kang, Qiuhao Zeng, Nima Hosseini Dashtbayaz,
+                            Ruizhi Pu, Boyu Wang, Charles Ling
+                        </p>
+                        <p class="pub-tldr"><span class="pub-tldr-label">TL;DR</span> Proves that node-attribute discrepancy, alongside structural shift, plays a critical role in graph domain adaptation, finds attribute shift larger than topology shift on benchmarks, and aligns both views with a cross-channel module.</p>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/pdf/2502.06808" class="pub-link" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Paper</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-item">
+                    <a class="pub-figure" href="images/overview_spgrl.png" data-acronym="SPGRL" data-venue="ICDM 2022" aria-label="Enlarge the SPGRL overview figure">
+                        <img src="images/overview_spgrl.png" alt="Overview of SPGRL" loading="lazy">
+                        <span class="pub-figure-zoom" aria-hidden="true"><i class="fas fa-expand"></i></span>
+                    </a>
+                    <div class="pub-body">
+                        <div class="pub-meta">
+                            <span class="pub-badge">ICDM 2022</span>
+                            <span class="pub-venue">IEEE International Conference on Data Mining</span>
+                        </div>
+                        <h3>Structure-Preserving Graph Representation Learning</h3>
+                        <p class="authors">
+                            <strong>Ruiyi Fang*</strong>, Liangjian Wen*, Zhao Kang, Jianzhuang Liu
+                        </p>
+                        <p class="pub-tldr"><span class="pub-tldr-label">TL;DR</span> Builds a kNN feature graph as a complementary view, contrasts it with the input graph at node level, and maximizes mutual information between graph and feature embeddings to retain global structure.</p>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/pdf/2209.00793" class="pub-link" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Paper</a>
+                            <a href="https://github.com/uestc-lese/SPGRL" class="pub-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </article>
 
             </div>
         </div>

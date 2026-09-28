@@ -196,6 +196,12 @@ Edit CSS variables in `style.css`:
    ```
 3. Changes will be live in a few minutes
 
+**If you changed `style.css` or `script.js`**, also bump the version in `index.html`
+(`style.css?v=YYYYMMDD` and `script.js?v=YYYYMMDD`). GitHub Pages lets browsers cache
+files for about 10 minutes, so without a new version a visitor can get the new HTML
+with the old CSS and see a broken layout. If a page looks broken right after an
+update, a hard refresh (Cmd+Shift+R on Mac, Ctrl+Shift+R on Windows) also fixes it.
+
 ### Add Google Analytics (Optional)
 
 Add before `</head>` in `index.html`:

@@ -65,6 +65,108 @@ document.querySelectorAll('.publication-item, .timeline-item, .award-item, .news
     observer.observe(el);
 });
 
+// Publication overview figures: acronym card for missing images + click-to-enlarge lightbox
+(function initPublicationFigures() {
+    const figures = document.querySelectorAll('.pub-figure');
+    if (!figures.length) return;
+
+    // If images/overview_<name>.png is not uploaded yet, show the acronym card instead
+    figures.forEach(fig => {
+        const img = fig.querySelector('img');
+        if (!img) return;
+        const markMissing = () => {
+            fig.classList.add('is-missing');
+            fig.removeAttribute('href');
+            fig.removeAttribute('aria-label');
+            fig.setAttribute('aria-hidden', 'true');
+        };
+        if (img.complete && img.naturalWidth === 0) {
+            markMissing();
+        } else {
+            img.addEventListener('error', markMissing, { once: true });
+        }
+    });
+
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.setAttribute('aria-label', 'Paper overview figure');
+    lightbox.innerHTML = `
+        <button type="button" class="lightbox-close" aria-label="Close"><i class="fas fa-times"></i></button>
+        <figure class="lightbox-figure">
+            <img class="lightbox-img" alt="">
+            <figcaption class="lightbox-caption"></figcaption>
+        </figure>`;
+    document.body.appendChild(lightbox);
+
+    const lbImg = lightbox.querySelector('.lightbox-img');
+    const lbCaption = lightbox.querySelector('.lightbox-caption');
+    const lbClose = lightbox.querySelector('.lightbox-close');
+    let lastTrigger = null;
+
+    function openLightbox(fig) {
+        const src = fig.getAttribute('href');
+        const thumb = fig.querySelector('img');
+        const item = fig.closest('.publication-item');
+        const title = item && item.querySelector('h3') ? item.querySelector('h3').textContent.trim() : '';
+        const venue = fig.dataset.venue || '';
+
+        lbImg.src = src;
+        lbImg.alt = thumb ? thumb.alt : '';
+        lbCaption.textContent = venue ? `${title} (${venue})` : title;
+        const full = document.createElement('a');
+        full.href = src;
+        full.target = '_blank';
+        full.rel = 'noopener';
+        full.textContent = 'Open full size';
+        lbCaption.append(' · ', full);
+
+        lastTrigger = fig;
+        lightbox.classList.add('open');
+        document.body.classList.add('lightbox-lock');
+        lbClose.focus();
+    }
+
+    function closeLightbox() {
+        if (!lightbox.classList.contains('open')) return;
+        lightbox.classList.remove('open');
+        document.body.classList.remove('lightbox-lock');
+        if (lastTrigger) lastTrigger.focus();
+    }
+
+    figures.forEach(fig => {
+        fig.addEventListener('click', e => {
+            e.preventDefault();
+            if (fig.classList.contains('is-missing') || !fig.getAttribute('href')) return;
+            openLightbox(fig);
+        });
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => {
+        if (e.target === lightbox || e.target.classList.contains('lightbox-figure')) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'Tab') {
+            // Keep keyboard focus inside the dialog
+            const focusables = lightbox.querySelectorAll('button, a[href]');
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+    });
+})();
+
 // Hide visitor placeholder if a real widget is loaded
 function hideVisitorPlaceholderIfReady() {
     const widget = document.getElementById('visitorWidget');
